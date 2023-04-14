@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+:root {
+--Very_Dark_Grayish_Blue: hsl(217, 19%, 35%);
+--Desaturated_Dark_Blue: hsl(214, 17%, 51%);
+--Grayish_Blue: hsl(212, 23%, 69%);
+--Light_Grayish_Blue: hsl(210, 46%, 95%);
+}
+
 .banner {
     width:  100%;
     height: 100%;
@@ -21,15 +28,19 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Manrope', sans-serif;
+
+    background-color: var(--Light_Grayish_Blue);
 }
 
 .container {
     width: 326px;
     height: 506px;
-
-    border: 1px solid black;
-
     margin: 100px 0px 100px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3);
 }
 
 .image {
@@ -39,42 +50,206 @@ body {
 .info {
     height: 304px;
 
-    padding: 30px;
+    padding: 40px 40px 25px 32px;
 }
 
 .info-title {
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 24px;
+
+    color: var(--Very_Dark_Grayish_Blue);
+
+    font-weight: bold;
 }
 
 .info-paragraph {
     font-size: 13px;
-    width: 95%;
+    color: var(--Grayish_Blue);
+    margin-bottom: 24px;
+
 }
 
 .info-footer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
 }
 
 .author {
     display: flex;
+    align-items: center;
+}
+
+.avatar {
+    margin-right: 15px;
+
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3);
 }
 
 .author-name {
-    font-size: 13px;
+    font-size: 11px;
+    color: var(--Very_Dark_Grayish_Blue);
+}
+
+.published-date {
+    font-size: 11px;
+    color: var(--Grayish_Blue);
 }
 
 .share {
     display: flex;
     justify-content: center;
     align-items: center;
+    
+
+
 }
 
 .share-button {
-    background-color: red;
+
+    border: none;
+    background-color:var(--Grayish_Blue);
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.1);
+
 }
 
 .share-options {
     position: absolute;
+    background-color:var(--Very_Dark_Grayish_Blue);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+
+    top: calc(100% + 0px);
+    left: 50%;
+    transform: translate(-50%,0);
+
+    width: 335px;
+
+    padding: 30px 0;
+
+    padding-left: 25px;
+
+    transition: all 0.2s ease-in-out;
+
+}
+
+.share-options.active {
+    top:calc(100% - 76px) ;
+
+    transition: all 0.2s ease-in-out;
+}
+
+span {
+    font-size: 11px;
+    font-weight: 100;
+    letter-spacing: 5px;
+
+    color: var(--Grayish_Blue);
+}
+
+svg path:hover {
+    fill:black;
+
+    cursor: pointer;
+
+    transition: all 0.1s ease-in-out;
+}
+
+
+@media screen and (min-width:768px) {
+
+
+    .banner {
+        object-fit: cover;
+        object-position: left;
+    }
+
+    .container {
+        display: flex;
+        height: 280px;
+
+        width: 730px;
+
+        position: unset;
+
+        overflow: visible;
+    }
+
+    .image {
+        width: 286px;
+        height: 100%;
+
+        border-radius: 10px 0px 0px 10px;
+
+        overflow: hidden;
+    }
+
+    .info {
+        width: 444px;
+
+        padding: 40px 40px 32px 40px;
+    }
+
+    .info-title {
+        font-size: 21px;
+        margin-bottom: 10px;
+    }
+
+    .share-options, .share-options.active {
+        top: unset;
+        left: unset;
+        transform: unset;
+    }
+
+    .share {
+        position: relative;
+    }
+
+    .share-options {
+        width: 248px;
+        height: 56px;
+
+        border-radius: 10px;
+
+        bottom: calc(100% + 35px);
+        left: 50%;
+        transform: translate(-50%,0) scale(0);
+    }
+
+    .share-options.active {
+        bottom: calc(100% + 35px);
+        left: 50%;
+        transform: translate(-50%,0) scale(1);
+    }
+
+    .share-options.active::before {
+        width:  20px;
+        height: 20px;
+
+        background-color:var(--Very_Dark_Grayish_Blue);
+
+        position: absolute;
+        content: "";
+
+        top:calc(100% + -10px);
+        left:46%;
+        transform: rotate(45deg);
+    }
 }
